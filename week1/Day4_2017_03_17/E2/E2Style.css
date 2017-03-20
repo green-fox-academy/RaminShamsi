@@ -1,0 +1,31 @@
+p, .second {
+  width: 200px;
+  height: auto;
+  font-size: 16px;
+  font-family: courier;
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+  background-repeat: no-repeat;
+}
+div p:nth-child(1) {
+background-color: #FF6347;
+background-image: url(images/duck.png);
+background-size: 20%;
+background-position: left;
+}
+div p:nth-child(2) {
+background-color: #643579;
+background-image: url(images/duck.png);
+background-size: 50%;
+background-position: center;
+}
+div p:nth-child(3) {
+background-color: #808080;
+background-image: url(images/duck.png);
+background-size: 20%;
+background-position: right bottom;
+}
+.seconnd {
+  display: inline;
+}

@@ -1,0 +1,12 @@
+h1 {
+
+}
+.box {
+ font-family: sans-serif;
+ font-size: 18px;
+ width: 350px;
+ border-left: 2px solid black;
+ padding-left: 20px;
+ /*padding-bottom: 15px;*/
+ margin-bottom: 15px;
+}

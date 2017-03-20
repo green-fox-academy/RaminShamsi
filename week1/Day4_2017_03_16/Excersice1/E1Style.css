@@ -1,0 +1,11 @@
+p, div {
+  font-family: Arial;
+  color: rgba(0, 85, 102, 1);
+  font-size: 36px;
+  width: 332px;
+  height: 105px;
+  background-color: rgba(14, 145, 161, 1);
+  border: 5px rgba(125, 206, 148, 1) solid;
+  padding: 17px 0px 13px 15px;
+  margin: 16px 0px 16px 50px;
+}

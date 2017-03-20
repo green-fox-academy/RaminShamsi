@@ -1,0 +1,17 @@
+h1 {
+  color: blue;
+}
+h2{
+  color: #FEB95C;
+}
+.items {
+  color: blue;
+  list-style-type:square;
+}
+.Apple {
+  color: red;
+  list-style-type:disc;
+}
+.subitem {
+  list-style-type:disc;
+}
