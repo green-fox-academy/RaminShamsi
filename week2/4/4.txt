@@ -1,1 +1,4 @@
-this is a 4st text
+this is a 4th 
+   for resting
+
+add new line and remove a work 'test'
