@@ -15,6 +15,5 @@ public class CompareLength {
     } else {
       System.out.println("p2 is more element");
     }
-
   }
 }
