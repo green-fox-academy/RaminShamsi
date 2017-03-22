@@ -9,4 +9,4 @@ public class SumElements {
     System.out.println("r = " + Arrays.toString(r));
     System.out.println("Sum of 2nd and 3rd element: " + (r[1] + r[2]));
   }
-}  
+}
