@@ -17,5 +17,6 @@ public class OneTwoALot {
     }else if (n > 2) {
       System.out.println("A Lot");
     }
+
   }
 }
