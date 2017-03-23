@@ -6,9 +6,7 @@ public class AppendA {
     String am = "Kuty";
     appendA(am);
   }
-
   public static void appendA(String a1) {
     System.out.println(a1 + "a");
   }
-
 }
