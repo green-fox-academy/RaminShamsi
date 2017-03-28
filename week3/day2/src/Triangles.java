@@ -4,6 +4,7 @@
 
 import javax.swing.*;
 import java.awt.*;
+
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class Triangles {
@@ -14,18 +15,18 @@ public class Triangles {
     int xTop = 250;
     int yStart = 0;
     int numberOfLines = 20;
-    triangle (graphics, xTop, yStart, edge, numberOfLines);
+    triangle(graphics, xTop, yStart, edge, numberOfLines);
   }
 
   private static void triangle(Graphics graphics, int xTop, int yStart, int edge, int numberOfLines) {
     int xStart, xS;
     double heightOfTriangle = 0.5 * edge * Math.pow(3, 0.5);
     for (int j = 0; j < numberOfLines; j++) {
-      xStart = xTop  - j * (edge/2);          // xStart = x coordinate of top point of first triangle at each line
-      for (int i = 0; i < j + 1 ; i++) {
+      xStart = xTop - j * (edge / 2);          // xStart = x coordinate of top point of first triangle at each line
+      for (int i = 0; i < j + 1; i++) {
         xS = xStart + edge * i;                 // xS = at each specific line, x coordinate of top point of triangle
-        int[] xP = {xS, xS + edge/2, xS - edge/2};
-        int[] yP = {yStart, yStart + (int)(heightOfTriangle), yStart + (int)(heightOfTriangle)};
+        int[] xP = {xS, xS + edge / 2, xS - edge / 2};
+        int[] yP = {yStart, yStart + (int) (heightOfTriangle), yStart + (int) (heightOfTriangle)};
         int nP = 3;
         graphics.setColor(Color.RED);
         graphics.drawPolygon(xP, yP, nP);
