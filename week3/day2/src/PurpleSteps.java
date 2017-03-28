@@ -24,7 +24,7 @@ public class PurpleSteps {
     int xStart = 10;
     int yStart = 10;
     int[] xPoint = {xStart + n * size, xStart + (n + 1) * size, xStart + (n + 1) * size, xStart + n * size};
-    int[] yPoint = {yStart + n * size, yStart + n * size, yStart + (n + 1) * size, yStart + (n + 1) * size,};
+    int[] yPoint = {yStart + n * size, yStart + n * size, yStart + (n + 1) * size, yStart + (n + 1) * size};
     int nPoints = 4;
     g.fillPolygon(xPoint, yPoint, nPoints);
   }
