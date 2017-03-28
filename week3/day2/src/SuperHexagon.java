@@ -12,30 +12,39 @@ public class SuperHexagon {
     // reproduce this:
     // [https://github.com/greenfox-academy/teaching-materials/blob/master/exercises/drawing/super-hexagon/r6.gif]
     int edge = 20;
-    int xPickPoint = 100;
+    int xTop = 200;
     int yPickPoint = 100;
-    hexagon(graphics, xPickPoint,yPickPoint,edge);
+    int numberOfLines = 5;
+    hexagon(graphics, xTop, yPickPoint, edge, numberOfLines);
 
   }
-  private static void hexagon(Graphics graphics, int xPickPoint, int yPickPoint, int edge) {
-    double h = 0.5 * edge * Math.pow(3, 0.5);
-    int x1 = xPickPoint - edge / 2;
-    int x2 = xPickPoint + edge / 2;
-    int x3 = xPickPoint + edge;
-    int x4 = x2;
-    int x5 = x1;
-    int x6 = xPickPoint - edge;
-    int y1 = yPickPoint - (int) h;
-    int y2 = y1;
-    int y3 = yPickPoint;
-    int y4 = yPickPoint + (int) h;
-    int y5 = y4;
-    int y6 = yPickPoint;
-    int[] xP = {x1, x2, x3, x4, x5, x6};
-    int[] yP = {y1, y2,y3,y4,y5,y6};
-    int nP = 6;
-    graphics.drawPolygon(xP, yP, nP);
 
+  private static void hexagon(Graphics graphics, int xTop, int yPickPoint, int edge, int numberOfLines) {
+    int xStart, xS;
+    double h = 0.5 * edge * Math.pow(3, 0.5);
+    for (int j = 0; j < numberOfLines; j++) {
+      xStart = xTop - j * (3 * edge / 2);          // xStart = x coordinate of top point of first triangle at each line
+      for (int i = 0; i < j + 1; i++) {
+        xS = xStart + 3 * edge * i;
+        int x1 = xS - edge / 2;
+        int x2 = xS + edge / 2;
+        int x3 = xS + edge;
+        int x4 = x2;
+        int x5 = x1;
+        int x6 = xS - edge;
+        int y1 = yPickPoint - (int) h;
+        int y2 = y1;
+        int y3 = yPickPoint;
+        int y4 = yPickPoint + (int) h;
+        int y5 = y4;
+        int y6 = yPickPoint;
+        int[] xP = {x1, x2, x3, x4, x5, x6};
+        int[] yP = {y1, y2, y3, y4, y5, y6};
+        int nP = 6;
+        graphics.drawPolygon(xP, yP, nP);
+      }
+      yPickPoint += h;
+    }
   }
 
   //    Don't touch the code below
