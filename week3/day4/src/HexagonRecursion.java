@@ -5,14 +5,14 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class HexagonRecursion {
   public static void mainDraw(Graphics graphics) {
-    int xStart = 300;
+    int xStart = 320;
     int yStart = 300;
     int edge = 300;
     hRecursion(graphics, xStart, yStart, edge);
   }
 
   private static void hRecursion(Graphics graphics, int xStart, int yStart, int edge) {
-    if (edge < 10) {
+    if (edge < 75) {
       // if the edge gets smaller than 10, finish Recursion
     } else {
       hexagon(graphics, xStart, yStart, edge);
