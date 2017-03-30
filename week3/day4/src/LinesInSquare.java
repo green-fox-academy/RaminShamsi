@@ -16,10 +16,10 @@ public class LinesInSquare {
 
   }
 
-  public static int lines(Graphics graphics, int xCorner, int yCorner, int width, int height ) {
+  public static void lines(Graphics graphics, int xCorner, int yCorner, int width, int height ) {
     int xP1,xP2,yP1,yP2, xP3, yP3, xP4, yP4,xP5,yP5,xP6,yP6,xP7,yP7,xP8,yP8;
     if (width == 0 && height ==0) {
-       return 0;
+    //   return 0;
     } else {
       graphics.setColor(Color.black);
       xP1 = xCorner + width/3;
@@ -47,8 +47,10 @@ public class LinesInSquare {
 ////////////////////////////////////////////////
 
 
-      return lines(graphics, xCorner + width/3 ,yCorner  , width /3, height /3);
-
+       lines(graphics, xCorner + width/3 ,yCorner  , width /3, height /3);
+       lines(graphics, xCorner  ,yCorner+ width/3  , width /3, height /3);
+       lines(graphics, xCorner+ width/3  ,yCorner+ 2*width/3  , width /3, height /3);
+      lines(graphics, xCorner+ 2*width/3  ,yCorner+ width/3  , width /3, height /3);
     }
   }
 
@@ -60,7 +62,7 @@ public class LinesInSquare {
 
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("Drawing");
-    jFrame.setSize(new Dimension(600, 600));
+    jFrame.setSize(new Dimension(650, 650));
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     jFrame.add(new ImagePanel());
     jFrame.setLocationRelativeTo(null);
