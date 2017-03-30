@@ -8,28 +8,25 @@ public class HexagonRecursion {
     int xStart = 300;
     int yStart = 300;
     int edge = 300;
-
-   // graphics.setColor(Color.YELLOW);
-   // graphics.fillRect(xCorner, yCorner, width, height);
-
-    hRecursion (graphics, xStart, yStart, edge);
-
+    hRecursion(graphics, xStart, yStart, edge);
   }
 
   private static void hRecursion(Graphics graphics, int xStart, int yStart, int edge) {
     if (edge < 10) {
-
+      // if the edge gets smaller than 10, finish Recursion
     } else {
-      double h = 0.5 * edge * Math.pow(3, 0.5);
       hexagon(graphics, xStart, yStart, edge);
-
-      hRecursion(graphics, (int)(xStart-edge/2*Math.cos(Math.toRadians(60))), yStart-(int)(edge/2*Math.sin(Math.toRadians(60))), edge/2);
-      hRecursion(graphics, xStart+edge/2, yStart, edge/2);
-      hRecursion(graphics, (int)(xStart-edge/2*Math.cos(Math.toRadians(60))), yStart+(int)(edge/2*Math.sin(Math.toRadians(60))), edge/2);
-
+      hRecursion(graphics,
+              xStart - (int) (edge / 2 * Math.cos(Math.toRadians(60))),
+              yStart - (int) (edge / 2 * Math.sin(Math.toRadians(60))),
+              edge / 2);
+      hRecursion(graphics, xStart + edge / 2, yStart, edge / 2);
+      hRecursion(graphics,
+              xStart - (int) (edge / 2 * Math.cos(Math.toRadians(60))),
+              yStart + (int) (edge / 2 * Math.sin(Math.toRadians(60))),
+              edge / 2);
     }
   }
-
 
   private static void hexagon(Graphics graphics, int xStart, int yStart, int edge) {
     int xS;
@@ -51,9 +48,7 @@ public class HexagonRecursion {
     int[] yP = {y1, y2, y3, y4, y5, y6};
     int nP = 6;
     graphics.drawPolygon(xP, yP, nP);
-
   }
-
 
   //    Don't touch the code below
 
