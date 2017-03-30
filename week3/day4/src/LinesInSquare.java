@@ -16,15 +16,14 @@ public class LinesInSquare {
 
   }
 
-  public static void lines(Graphics graphics, int xCorner, int yCorner, int width, int height ) {
-    int xP1,xP2,yP1,yP2, xP3, yP3, xP4, yP4,xP5,yP5,xP6,yP6,xP7,yP7,xP8,yP8;
-    if (width == 0 && height ==0) {
-    //   return 0;
+  public static void lines(Graphics graphics, int xCorner, int yCorner, int width, int height) {
+    int xP1, xP2, yP1, yP2, xP3, yP3, xP4, yP4, xP5, yP5, xP6, yP6, xP7, yP7, xP8, yP8;
+    if (width == 0 && height == 0) {
     } else {
       graphics.setColor(Color.black);
-      xP1 = xCorner + width/3;
-      xP2 = xCorner + 2*width/3;
-      yP1 = yCorner ;
+      xP1 = xCorner + width / 3;
+      xP2 = xCorner + 2 * width / 3;
+      yP1 = yCorner;
       yP2 = yP1;
 
       xP3 = xP1;
@@ -34,28 +33,23 @@ public class LinesInSquare {
       graphics.drawLine(xP1, yP1, xP3, yP3);
       graphics.drawLine(xP2, yP2, xP4, yP4);
 ////////////////////////////////////////////////////
-      xP5 = xCorner ;
+      xP5 = xCorner;
       xP6 = xCorner + width;
-      yP5 = yCorner+ height/3;
+      yP5 = yCorner + height / 3;
       yP6 = yP5;
       graphics.drawLine(xP5, yP5, xP6, yP6);
       xP7 = xP5;
       xP8 = xP6;
-      yP7 = yCorner + 2*height/3;
+      yP7 = yCorner + 2 * height / 3;
       yP8 = yP7;
       graphics.drawLine(xP7, yP7, xP8, yP8);
 ////////////////////////////////////////////////
-
-
-       lines(graphics, xCorner + width/3 ,yCorner  , width /3, height /3);
-       lines(graphics, xCorner  ,yCorner+ width/3  , width /3, height /3);
-       lines(graphics, xCorner+ width/3  ,yCorner+ 2*width/3  , width /3, height /3);
-      lines(graphics, xCorner+ 2*width/3  ,yCorner+ width/3  , width /3, height /3);
+      lines(graphics, xCorner + width / 3, yCorner, width / 3, height / 3);
+      lines(graphics, xCorner, yCorner + width / 3, width / 3, height / 3);
+      lines(graphics, xCorner + width / 3, yCorner + 2 * width / 3, width / 3, height / 3);
+      lines(graphics, xCorner + 2 * width / 3, yCorner + width / 3, width / 3, height / 3);
     }
   }
-
-
-
 
 
   //    Don't touch the code below
