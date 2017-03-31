@@ -8,27 +8,29 @@ public class SixHexagon {
     int xStart = 320;
     int yStart = 300;
     int edge = 300;
+
     hRecursion(graphics, xStart, yStart, edge);
   }
 
   private static void hRecursion(Graphics graphics, double xStart, double yStart, double edge) {
+    graphics.setColor(new Color((float)Math.random(),(float) Math.random(), (float)Math.random()));
     if (edge < 3) {
       // if the edge gets smaller than 10, finish Recursion
     } else {
-      /// 2 up
+      /// 2 in the top
       hexagon(graphics, xStart, yStart, edge);
       hRecursion(graphics,
-              xStart -  (2*edge /3d * Math.cos(Math.toRadians(60))),
-              yStart -  (2*edge /3d * Math.sin(Math.toRadians(60))),
-              edge / 3d);
+              xStart -  (2*edge /3 * Math.cos(Math.toRadians(60))),
+              yStart -  (2*edge /3 * Math.sin(Math.toRadians(60))),
+              edge / 3);
       hRecursion(graphics,
-              xStart +  (2*edge /3. * Math.cos(Math.toRadians(60))),
-              yStart -  (2*edge /3. * Math.sin(Math.toRadians(60))),
-              edge / 3.);
-       // 2 middle
+              xStart +  (2*edge /3 * Math.cos(Math.toRadians(60))),
+              yStart -  (2*edge /3 * Math.sin(Math.toRadians(60))),
+              edge / 3);
+       // 2 in the middle
       hRecursion(graphics, xStart + 2* edge / 3, yStart, edge / 3);
       hRecursion(graphics, xStart - 2* edge / 3, yStart, edge / 3);
-      // 2 down
+      // 2 in the down
       hRecursion(graphics,
               xStart -  (2*edge / 3 * Math.cos(Math.toRadians(60))),
               yStart +  (2*edge / 3 * Math.sin(Math.toRadians(60))),
@@ -41,6 +43,7 @@ public class SixHexagon {
   }
 
   private static void hexagon(Graphics graphics, double xStart, double yStart, double edge) {
+
     double xS;
     double h = 0.5 * edge * Math.pow(3, 0.5);
     xS = xStart;
@@ -59,6 +62,7 @@ public class SixHexagon {
     int[] xP = {(int)x1, (int)x2, (int)x3, (int)x4, (int)x5, (int)x6};
     int[] yP = {(int)y1,(int) y2, (int)y3,(int) y4, (int)y5, (int)y6};
     int nP = 6;
+
     graphics.drawPolygon(xP, yP, nP);
   }
 
