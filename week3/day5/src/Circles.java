@@ -7,24 +7,24 @@ public class Circles {
   public static void mainDraw(Graphics graphics) {
 
 //    graphics.drawOval(100, 100, 500, 500);
-   circle(graphics, 100, 100, 400);
+    circle(graphics, 300, 300, 400);
 
 
   }
 
-  public static void circle(Graphics graphics, int xCorner, int yCorner, int d) {
+  public static void circle(Graphics graphics, int xCenter, int yCenter, int d) {
 
 
-    if (d < 100) {
-      graphics.drawOval(xCorner, yCorner, d, d);
-      //    return r;
+    if (d < 10) {
+
     } else {
-      graphics.drawOval(xCorner, yCorner, d,d);
-      circle(graphics, xCorner + d/4, yCorner , d / 2);
-      circle(graphics, xCorner , yCorner+ d/4 , d / 2);
-  //    circle(graphics, xCorner+d , yCorner+d , d / 2);
-  //    circle(graphics, xCorner+ d/2 , yCorner+ d/2 , d / 2);
-   //   circle(graphics, xCorner+ (d/2 -d/8*(int)Math.sqrt(2))-d/4 , yCorner+ (int)(d/2*(1.5)-d/8)-d/4 , d / 2);
+      graphics.drawOval(xCenter - d / 2, yCenter - d / 2, d, d); /// Drawing Circle with Java box corner as center
+
+      circle(graphics, xCenter, yCenter - d / 4, d / 2);   
+      circle(graphics, xCenter - (int) (d / 4 * Math.cos(Math.toRadians(30))),
+              yCenter + (int) (d / 4 * Math.sin(Math.toRadians(30))), d / 2);
+      circle(graphics, xCenter + (int) (d / 4 * Math.cos(Math.toRadians(30))),
+              yCenter + (int) (d / 4 * Math.sin(Math.toRadians(30))), d / 2);
     }
   }
 

@@ -40,9 +40,24 @@ public class Lotto {
 //        dummy(i) = frequeny.values(i);
 //      }
 //      Collections.sort(dummy);
-      System.out.println(frequeny.values());
+      System.out.println(frequeny.size());
       System.out.println(frequeny);
       System.out.println(frequeny.keySet());
+      int big =0, key = 0;
+      for (int j = 0; j < 3; j++) {
+
+        int temp = frequeny.get(1);
+        for (int i = 1; i < frequeny.size(); i++) {
+
+          if (temp < frequeny.get(i)) {
+            key = i;
+            big = frequeny.get(i);
+            System.out.println("the number = " + key + " the frequency = " + big);
+            temp = frequeny.get(i);
+          }
+        }
+        frequeny.replace(key,big, 0);
+      }
 
     } catch (Exception e) {
     }
