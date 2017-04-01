@@ -5,34 +5,34 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class Triangels {
   public static void mainDraw(Graphics graphics) {
-
-
-    int[] xP = {300,450,150};
-    int [] yP = {50,(int)(50+300*Math.sin(Math.toRadians(60))),(int)(50+300*Math.sin(Math.toRadians(60)))};
-   // int n =2;
-
-
-    tRecursion(graphics, 2);
-
-  }
-  private static void tRecursion(Graphics graphics, int n) {
-      if(n<1){
-
-      } else {
-
-        int[] xP = {300* (int) (1 + 1 / n), 300 , 150 * (int) (1 - 1 / n)};
-        int[] yP = {50, (int) (50 + 300 * Math.sin(Math.toRadians(60))) * (int) (1 + 1 / n), (int) (50 + 300 * Math.sin(Math.toRadians(60))) * (int) (1 + 1 / n)};
-        int nP = 3;
-        graphics.drawPolygon(xP, yP, nP);
-        tRecursion(graphics, n - 1);
-      }
+    int xPickUp = 350;
+    int yPickUp = 100;
+    int edge = 200;
+    int numberOfIteration = 6;
+    graphics.setColor(Color.yellow);
+    triangle(graphics,xPickUp,yPickUp,edge);
+    tRecursion(graphics, xPickUp, yPickUp, edge, numberOfIteration);
   }
 
-
-  private static void triangle(int[] xP, int[] yP) {
-
+  private static void tRecursion(Graphics graphics, int xPickUp, int yPickUp, int edge, int n) {
+    if (n > 0) {
+      triangle(graphics,xPickUp,yPickUp,edge);
+      graphics.setColor(Color.RED);
+      tRecursion(graphics, xPickUp + edge / 2, yPickUp, edge / 2, n - 1);
+      graphics.setColor(Color.BLUE);
+      tRecursion(graphics, xPickUp - edge / 2, yPickUp, edge / 2, n - 1);
+      graphics.setColor(Color.green);
+      tRecursion(graphics, xPickUp, (int) (yPickUp + edge * Math.sin(Math.toRadians(60))), edge / 2, n - 1);
+    }
   }
 
+  private static void triangle(Graphics graphics, int xPickUp, int yPickUp, int edge) {
+    int[] xP = {xPickUp, xPickUp + edge / 2, xPickUp - edge / 2};
+    int yS = (int) (yPickUp + edge * Math.sin(Math.toRadians(60)));
+    int[] yP = {yPickUp, yS, yS};
+    int nP = 3;
+    graphics.fillPolygon(xP, yP, nP);
+  }
 
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("Drawing");
