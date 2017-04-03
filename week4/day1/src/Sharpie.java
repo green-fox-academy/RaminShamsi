@@ -7,7 +7,7 @@ public class Sharpie {
   float inkAmount;
 
   public Sharpie(String color, float width) {
-    this.inkAmount = 100;
+    this.inkAmount = 100f;
   }
 
   public void use(float cosumption) {
@@ -16,7 +16,7 @@ public class Sharpie {
 
   public static void main(String[] args) {
     Sharpie pen1 = new Sharpie("Red", 2);
-    pen1.use(63);
+    pen1.use(63.3f);
     System.out.println(pen1.inkAmount);
   }
 }
