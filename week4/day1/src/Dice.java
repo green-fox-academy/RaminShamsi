@@ -35,25 +35,13 @@ public class Dice {
 
   public static void main(String[] args) {
     Dice myDice = new Dice();
-    Dice [] modifiedDice = new Dice [6];
     myDice.roll();
     System.out.println(Arrays.toString(myDice.roll()));
     for (int i = 0; i < 6; i++) {
       while (myDice.getCurrent(i) != 6) {
         myDice.reroll(i);
- //       System.out.println(myDice.getCurrent(i));
       }
-  //     modifiedDice[i] = myDice.reroll(i);
-       System.out.println(myDice.getCurrent(i));
-    }
-    // System.out.println(Arrays.toString(myDice.roll()));
-
-    myDice.roll();
-    myDice.getCurrent();
-    myDice.getCurrent(5);
-    myDice.reroll();
-    myDice.getCurrent();
-    myDice.reroll(4);
-    myDice.getCurrent();
+     }
+     System.out.println(Arrays.toString(myDice.getCurrent()));
   }
 }
