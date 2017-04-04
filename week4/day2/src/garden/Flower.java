@@ -11,10 +11,6 @@ public class Flower extends Plant {
     super(waterAmount, color);
   }
 
-  public Flower(int waterAmount) {
-    super(waterAmount);
-  }
-
   public void getInfo() {
     if (waterAmount < 5) {
       System.out.println("The " + color + " " + typeName + " needs water");

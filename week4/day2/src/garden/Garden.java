@@ -23,19 +23,21 @@ public class Garden {
     mygarden.add(tree1);
     Tree tree2 = new Tree(0, "orange");
     mygarden.add(tree2);
+    info();
   }
 
   public void info() {
     for (int i = 0; i < mygarden.size(); i++) {
-      mygarden.get(i).getInfo();
-    }
+      mygarden.get(i).getInfo();                //calls "getInfo" method of Plant class for each member of arrayList,
+    }                                       // but since there is subclass, it goes to that method in specific subclass
+    System.out.println("-------------------");
   }
 
-  public void wateringGarden(float givingWater) {
-    float waterAmountForEach = givingWater / 4f;
-    for (Plant p : mygarden) {
-      p.giveWater(waterAmountForEach);
-    }
+  public void wateringGarden(float givenWater) {
+    float waterAmountForEach = givenWater / 4f;
+    for (Plant p : mygarden) {    // the "p" can be tree or flower, when I apply the "giveWater" method to that, it works like "getInfo" described up.
+      p.giveWater(waterAmountForEach);  //"waterAmountForEach" is same for each plant, BUT when gets specific it is better
+    }                                   // to define in each class, which we did now inside each class
+    info();
   }
-
 }

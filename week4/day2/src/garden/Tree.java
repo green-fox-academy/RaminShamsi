@@ -5,14 +5,8 @@ package garden;
  */
 public class Tree extends Plant {
 
-
   public Tree(int waterAmount, String color) {
     super(waterAmount, color);
-
-  }
-
-  public Tree(int waterAmount) {
-    super(waterAmount);
   }
 
   public void getInfo() {
