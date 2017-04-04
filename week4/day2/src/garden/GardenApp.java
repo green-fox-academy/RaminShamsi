@@ -5,7 +5,8 @@ package garden;
  */
 public class GardenApp {
   public static void main(String[] args) {
-
-
+GardenMaker myGarden = new GardenMaker();
+myGarden.fillGarden();
+myGarden.info();
   }
 }
