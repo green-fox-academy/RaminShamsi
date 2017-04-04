@@ -18,4 +18,8 @@ public class Mentor extends Person {
   public void introduce() {
     System.out.println("\"Hi,I'm " + name + ", a " + age + " years old " + gender + " " + level + " mentor\"");
   }
+
+  public void getGoal(){
+    System.out.println("\"My goal is: Educate brilliant junior software developers.\"");
+  }
 }
