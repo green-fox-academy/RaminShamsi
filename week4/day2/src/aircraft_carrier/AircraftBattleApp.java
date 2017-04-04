@@ -7,5 +7,6 @@ public class AircraftBattleApp {
   public static void main(String[] args) {
     Carrier myCarrier = new Carrier();
     myCarrier.addAircrafts("F16");
+    myCarrier.getStatus();
   }
 }

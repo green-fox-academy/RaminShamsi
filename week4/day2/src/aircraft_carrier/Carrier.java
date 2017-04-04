@@ -9,11 +9,13 @@ import java.util.List;
 public class Carrier {
   int healthLevel;
   int ammoNumber;
+  int totalDamge;
   List<Aircraft> myCarrier;
 
   public Carrier() {
     this.healthLevel = 500;
     this.ammoNumber = 100;
+    totalDamge =0;
     myCarrier = new ArrayList<>();
   }
 
@@ -28,7 +30,10 @@ public class Carrier {
     }
   }
 public void getStatus(){
-    
+  System.out.println("Aircraft count: " + F16.F16_counter + ", ammo storage: " + ammoNumber +", total damage: "+ totalDamge);
+  for (int i = 0; i < myCarrier.size(); i++) {
+    myCarrier.get(i).getStatus();
+  }
 }
   public void fight() {
 
