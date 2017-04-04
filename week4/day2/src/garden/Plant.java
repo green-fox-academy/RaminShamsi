@@ -4,13 +4,14 @@ package garden;
  * Created by HP on 4/4/2017.
  */
 public class Plant {
-  int waterAmount;
+  float waterAmount;
   String color;
   String type;
 
-  public Plant(int waterAmount, String type, String color) {
+  public Plant(int waterAmount, String color) {
     this.waterAmount = waterAmount;
     this.color = color;
+    this.type = type;
 
   }
 
@@ -22,7 +23,7 @@ public class Plant {
 
     }
 
-  public void giveWater() {
+  public void giveWater(float givenWater) {
 
   }
 }

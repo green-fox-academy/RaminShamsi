@@ -5,8 +5,12 @@ package garden;
  */
 public class GardenApp {
   public static void main(String[] args) {
-GardenMaker myGarden = new GardenMaker();
-myGarden.fillGarden();
-myGarden.info();
+    Garden myGarden = new Garden();
+    myGarden.fillGarden();
+    myGarden.info();
+    myGarden.wateringGarden(40);
+    myGarden.info();
+    myGarden.wateringGarden(70);
+    myGarden.info();
   }
 }
