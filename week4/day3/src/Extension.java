@@ -6,22 +6,29 @@ import java.util.List;
  */
 public class Extension {
   int add(int a, int b) {
-    return 5;
+    return a + b;
   }
 
   int maxOfThree(int a, int b, int c) {
-    if (a > b)
+    if (a >= b && a >= c)
       return a;
-    else
-      return c;
+    else if (b >= a && b >= c) {
+      return b;
+    }
+    return c;
   }
 
   int median(List<Integer> pool) {
-    return pool.get((pool.size()-1)/2);
+    if (((Integer)(pool.size()) == null ) || (pool.size() == 0)) {
+      return 0;
+    } else
+      return pool.get((pool.size() - 1) / 2);
   }
 
   boolean isVowel(char c) {
-    return Arrays.asList('a', 'u', 'o', 'e', 'i').contains(c);
+   String letter = Character.toString(c);
+  char [] b = letter.toLowerCase().toCharArray();
+    return Arrays.asList('a', 'u', 'o', 'e', 'i').contains(b[0]);
   }
 
   String translate(String hungarian) {
@@ -30,9 +37,9 @@ public class Extension {
     for (int i = 0; i < length; i++) {
       char c = teve.charAt(i);
       if (isVowel(c)) {
-        teve = String.join(c + "v" + c, teve.split(""+c));
-        i+=2;
-        length+=2;
+        teve = String.join(c + "v" + c, teve.split("" + c));
+        i += 2;
+        length += 2;
       }
     }
     return teve;
