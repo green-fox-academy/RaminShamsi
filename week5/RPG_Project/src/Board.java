@@ -3,24 +3,32 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+
 public class Board extends JComponent implements KeyListener {
 
   int testBoxX;
   int testBoxY;
+  int tileNumberX;
+  int tileNumberY;
+  WallArea newWallArea;
   GameObject hero;
   GameObject floor;
+
 
   public Board() {
     testBoxX = 0;
     testBoxY = 0;
+    tileNumberX = 10;
+    tileNumberY = 10;
+    newWallArea = new WallArea();
     hero = new GameObject();
     floor = new GameObject();
+ //   wall = new GameObject();
 
     // set the size of your draw board
     setPreferredSize(new Dimension(720, 720));
     setVisible(true);
   }
-
 
   @Override
   public void paint(Graphics graphics) {
@@ -28,17 +36,17 @@ public class Board extends JComponent implements KeyListener {
 //    graphics.fillRect(testBoxX, testBoxY, 70, 70);
     // here you have a 720x720 canvas
     // you can create and draw an image using the class below e.g.
-    for (int i = 0; i < 10; i++) {
-      for (int j = 0; j < 10; j++) {
-        floor.drawFixedObject(graphics, i, j);
+    for (int x = 0; x < tileNumberX; x++) {
+      for (int y = 0; y < tileNumberY; y++) {
+        floor.drawFloorObject(graphics, x, y);
       }
     }
-
-      hero.drawMovingObject(graphics);
+    newWallArea.wallArea(graphics);
+    hero.drawMovingObject(graphics);
 
 //    PositionedImage image = new PositionedImage("assets/boss.png", testBoxX, testBoxY);
 //    image.draw(graphics);
-    }
+  }
 
   public static void main(String[] args) {
     // Here is how you set up a new window and adding our board to it
@@ -54,6 +62,7 @@ public class Board extends JComponent implements KeyListener {
     frame.addKeyListener(board);
     // Notice (at the top) that we can only do this
     // because this Board class (the type of the board object) is also a KeyListener
+
   }
 
   // To be a KeyListener the class needs to have these 3 methods in it
@@ -71,13 +80,13 @@ public class Board extends JComponent implements KeyListener {
   @Override
   public void keyReleased(KeyEvent e) {
     // When the up or down keys hit, we change the position of our box
-    if (e.getKeyCode() == KeyEvent.VK_UP) {
+    if (e.getKeyCode() == KeyEvent.VK_UP && hero.testBoxY > 0) {
       hero.testBoxY -= 72;
-    } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+    } else if (e.getKeyCode() == KeyEvent.VK_DOWN && hero.testBoxY < (720 - 72)) {
       hero.testBoxY += 72;
-    } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+    } else if (e.getKeyCode() == KeyEvent.VK_LEFT && hero.testBoxX > 0) {
       hero.testBoxX -= 72;
-    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && hero.testBoxX < (720 - 72)) {
       hero.testBoxX += 72;
     }
 
