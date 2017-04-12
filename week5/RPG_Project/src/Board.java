@@ -5,25 +5,26 @@ import java.awt.event.KeyListener;
 
 
 public class Board extends JComponent implements KeyListener {
-
-  int testBoxX;
-  int testBoxY;
+  int heroPosX;
+  int heroPosY;
   int tileNumberX;
   int tileNumberY;
   WallArea newWallArea;
-  GameObject hero;
+  Hero hero;
   GameObject floor;
-
+  GameObject hero2;
 
   public Board() {
-    testBoxX = 0;
-    testBoxY = 0;
+       heroPosX = 0;
+
+    heroPosY = 0;
     tileNumberX = 10;
     tileNumberY = 10;
     newWallArea = new WallArea();
-    hero = new GameObject();
+    hero = new Hero();
     floor = new GameObject();
- //   wall = new GameObject();
+    hero2 = new GameObject();
+    //   wall = new GameObject();
 
     // set the size of your draw board
     setPreferredSize(new Dimension(720, 720));
@@ -33,7 +34,7 @@ public class Board extends JComponent implements KeyListener {
   @Override
   public void paint(Graphics graphics) {
     super.paint(graphics);
-//    graphics.fillRect(testBoxX, testBoxY, 70, 70);
+//    graphics.fillRect(heroPosX, heroPosY, 70, 70);
     // here you have a 720x720 canvas
     // you can create and draw an image using the class below e.g.
     for (int x = 0; x < tileNumberX; x++) {
@@ -41,10 +42,17 @@ public class Board extends JComponent implements KeyListener {
         floor.drawFloorObject(graphics, x, y);
       }
     }
-    newWallArea.wallArea(graphics);
-    hero.drawMovingObject(graphics);
 
-//    PositionedImage image = new PositionedImage("assets/boss.png", testBoxX, testBoxY);
+    newWallArea.wallArea(graphics);
+    hero2.movingDown(graphics);
+//    hero.draw(graphics);
+//       if (nextHeroPosX > heroPosX) {
+//         hero.movingRight(graphics);
+//    }
+    //
+
+
+//    PositionedImage image = new PositionedImage("assets/boss.png", heroPosX, heroPosY);
 //    image.draw(graphics);
   }
 
@@ -73,25 +81,34 @@ public class Board extends JComponent implements KeyListener {
 
   @Override
   public void keyPressed(KeyEvent e) {
-
+//    if (e.getKeyCode() == KeyEvent.VK_RIGHT ) {
+//      hero.movingRight(getGraphics());
+//    }
+//    repaint();
   }
 
   // But actually we can use just this one for our goals here
   @Override
   public void keyReleased(KeyEvent e) {
     // When the up or down keys hit, we change the position of our box
-    if (e.getKeyCode() == KeyEvent.VK_UP && hero.testBoxY > 0) {
-      hero.testBoxY -= 72;
-    } else if (e.getKeyCode() == KeyEvent.VK_DOWN && hero.testBoxY < (720 - 72)) {
-      hero.testBoxY += 72;
-    } else if (e.getKeyCode() == KeyEvent.VK_LEFT && hero.testBoxX > 0) {
-      hero.testBoxX -= 72;
-    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && hero.testBoxX < (720 - 72)) {
-      hero.testBoxX += 72;
+    if (e.getKeyCode() == KeyEvent.VK_UP && hero.posY > 0) {
+      hero.posY -= 72;
+//      hero.movingUp(getGraphics());
+    } else if (e.getKeyCode() == KeyEvent.VK_DOWN && hero.posY < (720 - 72)) {
+      hero.posY += 72;
+//      hero.movingDown(getGraphics());
+    } else if (e.getKeyCode() == KeyEvent.VK_LEFT && hero.posX > 0) {
+      hero.posX -= 72;
+      //     hero.movingLeft(getGraphics());
+    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && hero.posX < (720 - 72)) {
+      hero2.heroPosX += 72;
+      //      hero.moveRight();
+      hero2.movingRight(getGraphics());
     }
 
     // and redraw to have a new picture with the new coordinates
-    invalidate();
+    //   invalidate();
     repaint();
+
   }
 }
