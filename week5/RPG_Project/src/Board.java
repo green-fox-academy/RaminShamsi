@@ -6,44 +6,42 @@ import java.util.Arrays;
 
 
 public class Board extends JComponent implements KeyListener {
-  // int heroPosX;
-  // int heroPosY;
-  int tileNumberX;
-  int tileNumberY;
+
+  int tileNumberX, tileNumberY, numberOfSkeleton;
   WallArea newWallArea;
   Hero hero;
-  int numberOfSkeleton;
   Skeleton[] skeleton;
-  Skeleton skeleton1;
-  Skeleton skeleton2;
+  Boss boss;
   Floor floor;
 
   public Board() {
-    //   heroPosX = 0;
-    //   heroPosY = 0;
     tileNumberX = 10;
     tileNumberY = 10;
     newWallArea = new WallArea();
     hero = new Hero();
     floor = new Floor();
-    numberOfSkeleton = 2;
-    skeleton = new Skeleton[numberOfSkeleton];
+    numberOfSkeleton = 5;
+    skeleton = new Skeleton[numberOfSkeleton];    //initializing of skeleton arrays
     for (int i = 0; i < numberOfSkeleton; i++) {
-      int skeletonPosX = (int) (Math.random() * 10) * 72;
-      int skeletonPosY = (int) (Math.random() * 10) * 72;
-      if (!newWallArea.isWall(skeletonPosX, skeletonPosY)) {
-        skeleton[i] = new Skeleton(skeletonPosX, skeletonPosY);
-//        skeleton1 = new Skeleton(skeletonPosX, skeletonPosY);
+      boolean onWall = true;
+      while (onWall) {
+        int skeletonPosX = (int) (Math.random() * 10) * 72;
+        int skeletonPosY = (int) (Math.random() * 10) * 72;
+        if (!newWallArea.isWall(skeletonPosX, skeletonPosY)) {
+          skeleton[i] = new Skeleton(skeletonPosX, skeletonPosY);
+          onWall = false;
+        }
       }
     }
-//    int skeletonPosX2 = (int) (Math.random() * 10) * 72;
-//    int skeletonPosY2 = (int) (Math.random() * 10) * 72;
-//    if (!newWallArea.isWall(skeletonPosX2, skeletonPosY2)) {
-//      skeleton2 = new Skeleton(skeletonPosX2, skeletonPosY2);
-//    }
-
-    // floor = new GameObject();
-    //   wall = new GameObject();
+    boolean onWall = true;
+    while (onWall) {
+      int bossX = (int) (Math.random() * 10) * 72;
+      int bossY = (int) (Math.random() * 10) * 72;
+      if (!newWallArea.isWall(bossX, bossY)) {
+        boss = new Boss(bossX, bossY);
+        onWall = false;
+      }
+    }
 
     // set the size of your draw board
     setPreferredSize(new Dimension(720, 720));
@@ -63,12 +61,11 @@ public class Board extends JComponent implements KeyListener {
     }
 
     newWallArea.wallArea(graphics);
-    hero.draw(graphics);
     for (int i = 0; i < numberOfSkeleton; i++) {
       skeleton[i].draw(graphics);
     }
-//    skeleton1.draw(graphics);
-//    skeleton2.draw(graphics);
+    boss.draw(graphics);
+    hero.draw(graphics);
 
 
 //    PositionedImage image = new PositionedImage("assets/boss.png", heroPosX, heroPosY);
@@ -100,10 +97,7 @@ public class Board extends JComponent implements KeyListener {
 
   @Override
   public void keyPressed(KeyEvent e) {
-//    if (e.getKeyCode() == KeyEvent.VK_RIGHT ) {
-//      hero.movingRight(getGraphics());
-//    }
-//    repaint();
+
   }
 
   // But actually we can use just this one for our goals here
@@ -114,31 +108,31 @@ public class Board extends JComponent implements KeyListener {
     if (e.getKeyCode() == KeyEvent.VK_UP && hero.posY > 0
             && !newWallArea.isWall(hero.posX, hero.posY - 72)) {
       hero.moveUp();
-//      for (int i = 0; i < 3; i++) {
-//        skeleton[i].move();
-//      }
-      skeleton[1].move();
+      for (int i = 0; i < numberOfSkeleton; i++) {
+        skeleton[i].move();
+      }
+//      skeleton[1].move();
     } else if (e.getKeyCode() == KeyEvent.VK_DOWN && hero.posY < (720 - 72)
             && !newWallArea.isWall(hero.posX, hero.posY + 72)) {
       hero.moveDown();
-//      for (int i = 0; i < 3; i++) {
-//        skeleton[i].move();
-//      }
-      skeleton[1].move();
+      for (int i = 0; i < numberOfSkeleton; i++) {
+        skeleton[i].move();
+      }
+//      skeleton[1].move();
     } else if (e.getKeyCode() == KeyEvent.VK_LEFT && hero.posX > 0
             && !newWallArea.isWall(hero.posX - 72, hero.posY)) {
       hero.moveLeft();
-//      for (int i = 0; i < 3; i++) {
-//        skeleton[i].move();
-//      }
-      skeleton[1].move();
+      for (int i = 0; i < numberOfSkeleton; i++) {
+        skeleton[i].move();
+      }
+//      skeleton[1].move();
     } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && hero.posX < (720 - 72)
             && newWallArea.isWall(hero.posX + 72, hero.posY) == false) {
       hero.moveRight();
-//      for (int i = 0; i < 3; i++) {
-//        skeleton[i].move();
-//      }
-      skeleton[1].move();
+      for (int i = 0; i < numberOfSkeleton; i++) {
+        skeleton[i].move();
+      }
+//     skeleton[1].move();
     }
 
     // and redraw to have a new picture with the new coordinates

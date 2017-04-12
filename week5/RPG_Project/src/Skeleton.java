@@ -6,16 +6,27 @@ public class Skeleton extends PositionedImage {
     super("assets/skeleton.png", posX, posY);
   }
 
-  public void move() {
-    if (posX > 0 && posY > 0 && posX <= 720 - 72 && posY <= 720 - 72) {
+  WallArea wall = new WallArea();
 
-        posX -= (int) (Math.random() * 2 % 2) * 72;
-        posY -= (int) (Math.random() * 2 % 2) * 72;
+  public void move() {
+    if ((int) (Math.random() * 2 % 2) == 1) {
+      if (posX - 72 > 0 && !wall.isWall(posX - 72, posY)) {
+        posX -= 72;
         setImage("assets/skeleton.png");
-      } else if ((int) (Math.random() * 2 % 2) == 0){
-        posX += (int) (Math.random() * 2 % 2) * 72;
-        posY += (int) (Math.random() * 2 % 2) * 72;
+      }
+      if (posY - 72 > 0 && !wall.isWall(posX, posY - 72)) {
+        posY -= 72;
+        setImage("assets/skeleton.png");
+      }
+    } else {
+      if (posX < 720 - 72 && !wall.isWall(posX + 72, posY)) {
+        posX += 72;
+        setImage("assets/skeleton.png");
+      }
+      if (posY < 720 - 72 && !wall.isWall(posX, posY + 72)) {
+        posY += 72;
         setImage("assets/skeleton.png");
       }
     }
   }
+}
