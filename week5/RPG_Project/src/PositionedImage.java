@@ -13,11 +13,6 @@ public class PositionedImage {
     this.posX = posX;
     this.posY = posY;
     setImage(filename);
-//    try {
-//      image = ImageIO.read(new File(filename));
-//    } catch (IOException e) {
-//      e.printStackTrace();
-//    }
   }
 
   public void setImage(String filename) {
@@ -26,7 +21,6 @@ public class PositionedImage {
     } catch (IOException e) {
       e.printStackTrace();
     }
-  //  this.image = image;
   }
 
   public void draw(Graphics graphics) {

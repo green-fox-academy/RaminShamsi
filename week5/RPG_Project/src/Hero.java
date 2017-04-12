@@ -4,12 +4,26 @@
 public class Hero extends PositionedImage {
 
   public Hero() {
-   super("assets/hero-down.png",0, 0);
-
+    super("assets/hero-down.png", 0, 0);
   }
 
-  public void moveRight(){
-   posX += 72;
-   setImage("assets/hero-right.png");
+  public void moveDown() {
+    posY += 72;
+    setImage("assets/hero-down.png");
+  }
+
+  public void moveUp() {
+    posY -= 72;
+    setImage("assets/hero-up.png");
+  }
+
+  public void moveRight() {
+    posX += 72;
+    setImage("assets/hero-right.png");
+  }
+
+  public void moveLeft() {
+    posX -= 72;
+    setImage("assets/hero-left.png");
   }
 }

@@ -9,6 +9,7 @@ public class WallArea extends GameObject {
   MazeObj m;
   byte[][] result;
 
+
   public WallArea() {
     tileNumberX = 10;
     tileNumberY = 10;
@@ -23,6 +24,18 @@ public class WallArea extends GameObject {
           drawWallObject(graphics, x, y);
         }
       }
+    }
+  }
+
+  public boolean isWall(int posX, int posY) {
+    try {
+      if (result[posX / 72][posY / 72] == 1) {
+        return false;
+      } else {
+        return true;
+      }
+    } catch (Exception e) {
+      return true;
     }
   }
 }

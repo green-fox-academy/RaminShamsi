@@ -2,28 +2,27 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Arrays;
 
 
 public class Board extends JComponent implements KeyListener {
-  int heroPosX;
-  int heroPosY;
+  // int heroPosX;
+  // int heroPosY;
   int tileNumberX;
   int tileNumberY;
   WallArea newWallArea;
   Hero hero;
-  GameObject floor;
-  GameObject hero2;
+  Floor floor;
 
   public Board() {
-       heroPosX = 0;
-
-    heroPosY = 0;
+    //   heroPosX = 0;
+    //   heroPosY = 0;
     tileNumberX = 10;
     tileNumberY = 10;
     newWallArea = new WallArea();
     hero = new Hero();
-    floor = new GameObject();
-    hero2 = new GameObject();
+    floor = new Floor();
+    // floor = new GameObject();
     //   wall = new GameObject();
 
     // set the size of your draw board
@@ -39,17 +38,12 @@ public class Board extends JComponent implements KeyListener {
     // you can create and draw an image using the class below e.g.
     for (int x = 0; x < tileNumberX; x++) {
       for (int y = 0; y < tileNumberY; y++) {
-        floor.drawFloorObject(graphics, x, y);
+        floor.drawFloor(graphics, x * 72, y * 72);
       }
     }
 
     newWallArea.wallArea(graphics);
-    hero2.movingDown(graphics);
-//    hero.draw(graphics);
-//       if (nextHeroPosX > heroPosX) {
-//         hero.movingRight(graphics);
-//    }
-    //
+    hero.draw(graphics);
 
 
 //    PositionedImage image = new PositionedImage("assets/boss.png", heroPosX, heroPosY);
@@ -91,19 +85,19 @@ public class Board extends JComponent implements KeyListener {
   @Override
   public void keyReleased(KeyEvent e) {
     // When the up or down keys hit, we change the position of our box
-    if (e.getKeyCode() == KeyEvent.VK_UP && hero.posY > 0) {
-      hero.posY -= 72;
-//      hero.movingUp(getGraphics());
-    } else if (e.getKeyCode() == KeyEvent.VK_DOWN && hero.posY < (720 - 72)) {
-      hero.posY += 72;
-//      hero.movingDown(getGraphics());
-    } else if (e.getKeyCode() == KeyEvent.VK_LEFT && hero.posX > 0) {
-      hero.posX -= 72;
-      //     hero.movingLeft(getGraphics());
-    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && hero.posX < (720 - 72)) {
-      hero2.heroPosX += 72;
-      //      hero.moveRight();
-      hero2.movingRight(getGraphics());
+
+    if (e.getKeyCode() == KeyEvent.VK_UP && hero.posY > 0
+            && !newWallArea.isWall(hero.posX, hero.posY - 72)) {
+      hero.moveUp();
+    } else if (e.getKeyCode() == KeyEvent.VK_DOWN && hero.posY < (720 - 72)
+            && !newWallArea.isWall(hero.posX, hero.posY + 72)) {
+      hero.moveDown();
+    } else if (e.getKeyCode() == KeyEvent.VK_LEFT && hero.posX > 0
+            && !newWallArea.isWall(hero.posX - 72, hero.posY)) {
+      hero.moveLeft();
+    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && hero.posX < (720 - 72)
+            && newWallArea.isWall(hero.posX + 72, hero.posY) == false) {
+      hero.moveRight();
     }
 
     // and redraw to have a new picture with the new coordinates
