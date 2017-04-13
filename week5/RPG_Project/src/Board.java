@@ -44,8 +44,10 @@ public class Board extends JComponent implements KeyListener {
         onWall = false;
       }
     }
-    infoBox.valueInfo = 9999;
-    infoBox.textInfo = "Bababblalla: ";
+
+    infoBox.textInfo = new String[]{"Level: ", "HP:  ", "/ ", "DP: ", "SP: "};
+    infoBox.valueInfo = new int[]{1, 8, 10, 7, 6};
+//    infoBox.textInfo = ;
     // set the size of your draw board
     setPreferredSize(new Dimension(720, 720));
     setVisible(true);
