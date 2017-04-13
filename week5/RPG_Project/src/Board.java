@@ -13,6 +13,7 @@ public class Board extends JComponent implements KeyListener {
   Skeleton[] skeleton;
   Boss boss;
   Floor floor;
+  InfoBox infoBox;
 
   public Board() {
     tileNumberX = 10;
@@ -20,7 +21,8 @@ public class Board extends JComponent implements KeyListener {
     newWallArea = new WallArea();
     hero = new Hero();
     floor = new Floor();
-    numberOfSkeleton = 5;
+    infoBox = new InfoBox();
+    numberOfSkeleton = 3;
     skeleton = new Skeleton[numberOfSkeleton];    //initializing of skeleton arrays
     for (int i = 0; i < numberOfSkeleton; i++) {
       boolean onWall = true;
@@ -42,7 +44,8 @@ public class Board extends JComponent implements KeyListener {
         onWall = false;
       }
     }
-
+    infoBox.valueInfo = 9999;
+    infoBox.textInfo = "Bababblalla: ";
     // set the size of your draw board
     setPreferredSize(new Dimension(720, 720));
     setVisible(true);
@@ -67,7 +70,9 @@ public class Board extends JComponent implements KeyListener {
     boss.draw(graphics);
     hero.draw(graphics);
 
-
+    infoBox.getTextInfo();
+    infoBox.getValueInfo();
+    infoBox.drowBox(graphics);
 //    PositionedImage image = new PositionedImage("assets/boss.png", heroPosX, heroPosY);
 //    image.draw(graphics);
   }
