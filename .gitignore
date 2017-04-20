@@ -5,3 +5,8 @@ out
 *.iml
 
 *.xml
+
+settings.gradle
+.gradle
+gradle
+!gradle-wrapper.jar
