@@ -1,14 +1,23 @@
+import joptsimple.OptionParser;
+import joptsimple.OptionSet;
+
 /**
  * Created by HP on 4/20/2017.
  */
 public class LotteryFilter {
   public static void main(String[] args) {
-
-    if (args.length == 6 && args[0].equals("-y") && args[2].equals("-f") && args[4].equals("-o")) {
+    OptionParser myParser = new OptionParser("yfo");
+    OptionSet myOption = myParser.parse(args);
+    if(myOption.has("y")&& myOption.has("f")&& myOption.has("o")){
+      System.out.println("Parser works");
       String inputFileName = "otos.csv";
       DataHandler.filterByYear(args[1], inputFileName, args[5]);
-
-    }else if (args.length == 4 && args[0].equals("-y") && args[2].equals("-o")) {
+    }
+//    if (args.length == 6 && args[0].equals("-y") && args[2].equals("-f") && args[4].equals("-o")) {
+//      String inputFileName = "otos.csv";
+//      DataHandler.filterByYear(args[1], inputFileName, args[5]);
+//    }else
+      if (args.length == 4 && args[0].equals("-y") && args[2].equals("-o")) {
       String inputFileName = "otos.csv";
       DataHandler.filterByYear(args[1], inputFileName, args[3]);
 
