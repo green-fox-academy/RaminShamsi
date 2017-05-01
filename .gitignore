@@ -10,4 +10,6 @@ out
 settings.gradle
 .gradle
 gradle
+!gradle/wrapper
+gradle/wrapper
 !gradle/wrapper/gradle-wrapper.jar
