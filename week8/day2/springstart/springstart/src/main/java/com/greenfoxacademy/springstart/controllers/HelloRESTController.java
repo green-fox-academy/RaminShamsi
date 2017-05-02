@@ -14,7 +14,7 @@ public class HelloRESTController {
 
   @RequestMapping(value = "/greeting")
   public Greeting greeting(@RequestParam("anyName") String name) {
-    // the URL should be like: http://localhost:8080/greeting?anyName=Ramin
+    // the URL should be like: http://localhost:8080/greeting?anyName=<put any name here>   NOTE: attention to "anyName"
     Greeting myGreeting = new Greeting(counter.incrementAndGet(), "Hello, " + name + "!");
     return myGreeting;
   }
