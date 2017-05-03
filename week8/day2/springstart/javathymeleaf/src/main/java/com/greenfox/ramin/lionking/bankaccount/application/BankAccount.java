@@ -9,6 +9,7 @@ public class BankAccount {
   int balance;
   String animalType;
 
+
   public String getName() {
     return name;
   }

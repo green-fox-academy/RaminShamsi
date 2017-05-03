@@ -4,6 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class Controllers {
 
@@ -35,4 +38,14 @@ public class Controllers {
     return "ex4submitString";
   }
 
+  @RequestMapping("/list")
+  public String exercise5(Model model){
+    List<BankAccount> list = new ArrayList<>();
+    list.add(new BankAccount("Muffin", 3000, "Dog"));
+    list.add(new BankAccount("Marty", 2000, "Zebra"));
+    list.add(new BankAccount("Simba", 1000, "Lion"));
+    list.add(new BankAccount("Rio", 5000, "Bird"));
+    model.addAttribute("myList", list);
+    return "ex5list";
+  }
 }
