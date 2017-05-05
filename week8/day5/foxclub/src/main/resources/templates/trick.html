@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Trick Center</title>
+</head>
+<body>
+
+<li><a href="/">Information</a></li>
+<li><a href="/nutritionStore">Nutrition Store</a></li>
+
+<form action="/submit">
+    <lable>
+        <b>Trick</b>
+    </lable>
+    <select name="trick" id="">
+        <option>Bite me</option>
+        <option>Java</option>
+        <option>HTML</option>
+        <option>Clean the house</option>
+    </select>
+
+    <a th:href="@{/learn}">
+        <input type="submit" value="Learn"/>
+    </a>
+</form>
+</body>
+</html>
