@@ -9,10 +9,33 @@
 <li><a href="/nutritionStore">Nutrition Store</a></li>
 <li><a href="/trick">Trick Center</a></li>
 <img src="greenfox.png" alt="Mr. Fox"/>
-<p>This is Mr. Fox. Currently living on <b th:text="${food}">food</b>
-    and <b th:text="${drink}">drink</b>. He knows 0 tricks.</p>
+<!--
+<p>(Object)This is Mr. Fox. Currently living on <b th:text="${food}">food</b>
+    and <b th:text="${drink}">drink</b>. He knows <b th:text="${trickListSize}">number of tricks</b> tricks.
+</p>
+-->
+<p>(String)This is Mr. Fox. Currently living on <b th:text="${food}">food</b>
+    and <b th:text="${drink}">drink</b>. He knows <b th:text="${trickListSize2}">number of tricks</b> tricks.
+</p>
+<!--  -->
 <h1>Knows tricks</h1>
-<p>You know no tricks yet. Go and learn some.</p>
+
+<!--
+<b>
+    <div th:each="each : ${eachTrick}">
+        <li th:text="${each}">each trick</li>
+    </div>
+</b>
+-->
+<div th:if="${isEmpty}">
+    <p>You know no tricks yet. Go and learn some.</p>
+</div>
+
+<div th:else="${isEmpty}">
+    <div th:each="each : ${eachTrick2}">
+        <li th:text="${each}">each trick</li>
+    </div>
+</div>
 
 </body>
 </html>

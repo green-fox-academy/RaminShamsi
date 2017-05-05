@@ -8,21 +8,38 @@
 
 <li><a href="/">Information</a></li>
 <li><a href="/nutritionStore">Nutrition Store</a></li>
-
-<form action="/submit">
+<!-- //////////////////////////////////////////////////////////
+<form action="/addTrick">
     <lable>
         <b>Trick</b>
     </lable>
+
     <select name="trick" id="">
-        <option>Bite me</option>
-        <option>Java</option>
-        <option>HTML</option>
-        <option>Clean the house</option>
+        <p th:each="eachTrick : ${trickList}">
+            <option th:text="${eachTrick}">trick</option>
+        </p>
     </select>
 
-    <a th:href="@{/learn}">
+    <a th:href="@{/addTrick}">
         <input type="submit" value="Learn"/>
     </a>
 </form>
+ //////////////////////////////////////////////////////////-->
+<form action="/addTrick2">
+    <lable>
+        <b>Trick2</b>
+    </lable>
+
+    <select name="trick" id="">
+        <p th:each="eachTrick2 : ${trickList2}">
+            <option th:text="${eachTrick2}">trick</option>
+        </p>
+    </select>
+
+    <a th:href="@{/addTrick2}">
+        <input type="submit" value="Learn"/>
+    </a>
+</form>
+
 </body>
 </html>

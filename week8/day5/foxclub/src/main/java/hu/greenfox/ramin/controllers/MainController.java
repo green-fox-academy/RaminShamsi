@@ -2,6 +2,7 @@ package hu.greenfox.ramin.controllers;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import hu.greenfox.ramin.models.Fox;
+import hu.greenfox.ramin.models.Trick;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,9 @@ public class MainController {
 
   @Autowired
   Fox fox;
+  @Autowired
+  Trick trick;
+
 
   @RequestMapping("/")
   public ModelAndView info() {
@@ -31,7 +35,14 @@ public class MainController {
     m.setViewName("information");
     m.addObject("food", fox.getFood());
     m.addObject("drink", fox.getDrink());
- //   System.out.println(fox.foodList.get(3));
+    //////////////////Object /////////////
+ //   m.addObject("trickListSize", fox.trickList.size());
+//    m.addObject("eachTrick", fox.trickList.toString());                        /////  sharing this part
+    //////////////////String/////////////////
+    m.addObject("trickListSize2", fox.trickList2.size());
+    m.addObject("eachTrick2", fox.trickList2);
+    m.addObject("isEmpty", fox.trickList2.isEmpty());
+  //  System.out.println(fox.trickList.size());
     return m;
   }
 
@@ -44,7 +55,7 @@ public class MainController {
     return m;
   }
 
-  //, params = {"food", "drink"}   , HttpServletRequest request,  HttpServletResponse response , method = RequestMethod.GET
+
 //  @RequestMapping("/submit")
 //  public String submit(HttpServletRequest request) {
 //    String actualFood =  request.getParameter("food");
@@ -56,8 +67,8 @@ public class MainController {
 //    return "redirect:/";
 //  }
 
-  @RequestMapping(value="/submit")
-  public String change(@RequestParam("food") String actualFood, @RequestParam("drink") String actualDrink){
+  @RequestMapping(value="/addNutrition")
+  public String changeNutrition(@RequestParam("food") String actualFood, @RequestParam("drink") String actualDrink){
     fox.setActualFood(actualFood);
     fox.setActualDrink(actualDrink);
   //  fox.foodList.remove(fox.foodList.indexOf(actualFood));
@@ -69,6 +80,27 @@ public class MainController {
   public ModelAndView trick() {
     ModelAndView m = new ModelAndView();
     m.setViewName("trick");
+    m.addObject("trickList", trick.ListofTricks);
+    m.addObject("trickList2", fox.ListofTricks2);
+ //   fox.trickList2.remove(fox.trickList2.indexOf(trick.removedTrick));
     return m;
+  }
+
+  @RequestMapping(value="/addTrick")
+  public String addTrick(@RequestParam("trick") String actualTrick){
+    fox.setActualTrick(actualTrick);
+
+    //  fox.foodList.remove(fox.foodList.indexOf(actualFood));
+    return "redirect:/";
+  }
+
+  @RequestMapping(value="/addTrick2")
+  public String addTrick2(@RequestParam("trick") String actualTrick){
+    fox.setActualTrick2(actualTrick);
+
+    trick.setRemovedTrick(actualTrick);
+
+    //  fox.foodList.remove(fox.foodList.indexOf(actualFood));
+    return "redirect:/";
   }
 }
