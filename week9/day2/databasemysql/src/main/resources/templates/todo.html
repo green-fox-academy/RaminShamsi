@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/todo.css}"/>
+    <title>To DO</title>
+</head>
+<body>
+<h1>Todos for Today:</h1>
+
+<a href="add.html"> Add New Todo</a>
+
+<div>
+    <b>
+        <form action="/todo/done" method="get" >
+            <input type="checkbox" > List the Done Todos </input>
+        </form>
+    </b>
+</div>
+
+<table>
+    <header>
+        <tr>
+            <th>ID</th>
+            <th>Action</th>
+            <th>DONE</th>
+            <th>URGENT</th>
+        </tr>
+    </header>
+    <tr th:each="item : ${eachTodo}">
+        <td th:text="${item.getId()}"></td>
+        <td th:text="${item.getTitle()}"></td>
+        <td th:text="${item.isDone()}"></td>
+        <td th:text="${item.isUrgent()}"></td>
+    </tr>
+</table>
+</body>
+</html>
