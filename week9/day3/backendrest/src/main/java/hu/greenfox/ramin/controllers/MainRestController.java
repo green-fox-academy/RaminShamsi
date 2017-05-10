@@ -49,12 +49,13 @@ public class MainRestController {
   //   Creating JSON form of error respond(means inside the curly bracket) with Object of the class
   @ExceptionHandler(MissingServletRequestParameterException.class)
   public MyErrors errorHandler(MissingServletRequestParameterException e) {
+    System.out.println(e.getParameterName());
     if (e.getParameterName().equals("input")) {
       myErrors.setError("Please provide an input!");
     } else if (e.getParameterName().equals("name")) {
-      myErrors.setError("Please provide an name!");
+      myErrors.setError("Please provide a name!");
     } else if (e.getParameterName().equals("title")) {
-      myErrors.setError("Please provide an title!");
+      myErrors.setError("Please provide a title!");
     }
     return myErrors;
   }
