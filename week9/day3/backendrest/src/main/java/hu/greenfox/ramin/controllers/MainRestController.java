@@ -42,24 +42,34 @@ public class MainRestController {
   }
 
   @Autowired
-  Result doUntil;
+  UntilResult resultObj;
 
   @PostMapping("/dountil/{what}")
-  public Result getDoUntil(@PathVariable String what, @RequestBody Until inputNumber) {
+  public UntilResult getDoUntil(@PathVariable String what, @RequestBody Until inputNumber) {
 
     if (what.equals("sum")) {
-      doUntil.sum(inputNumber.getUntil());
+      resultObj.sum(inputNumber.getUntil());
     } else {
-      doUntil.factor(inputNumber.getUntil());
+      resultObj.factor(inputNumber.getUntil());
     }
-    return doUntil;
+    return resultObj;
+  }
+
+@Autowired
+ArrayResult arrayResult;
+  @PostMapping(value="/arrays")
+  public ArrayResult getArrayResult(@RequestBody ArrayWhat inputData){
+    if (inputData.getWhat().equals("sum")) {
+      arrayResult.sum(inputData.getInputArray());
+    }
+    return arrayResult;
   }
 
   @Autowired
   MyErrors myErrors;
 
   //   Creating JSON form of error respond(means inside the curly bracket) with Object of the class
-  @ExceptionHandler(MissingServletRequestParameterException.class)
+  @ExceptionHandler({MissingServletRequestParameterException.class})
   public MyErrors errorHandler(MissingServletRequestParameterException e) {
     System.out.println(e.getParameterName());
     if (e.getParameterName().equals("input")) {
@@ -75,6 +85,12 @@ public class MainRestController {
   @ExceptionHandler(HttpMessageNotReadableException.class)
   public MyErrors errorHandlerDOUntil(HttpMessageNotReadableException e) {
     myErrors.setError("Please provide a number!");
+    return myErrors;
+  }
+
+  @ExceptionHandler(NullPointerException.class)
+  public MyErrors getMyErrorsArray(NullPointerException e){
+    myErrors.setError("Please provide what to do with the numbers!");
     return myErrors;
   }
 

@@ -4,11 +4,11 @@ package hu.greenfox.ramin.models;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Result {
+public class UntilResult {
 
   private int result;
 
-  public Result() {
+  public UntilResult() {
 
   }
 
@@ -21,11 +21,11 @@ public class Result {
   }
 
   public void factor(int inputNumber) {
-    int multi = 1;
+    int factorial = 1;
     for (int i = 1; i <= inputNumber; i++) {
-      multi *= i;
+      factorial *= i;
     }
-    this.result = multi;
+    this.result = factorial;
   }
 
 
