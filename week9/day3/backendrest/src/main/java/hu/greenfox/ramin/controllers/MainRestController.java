@@ -1,10 +1,8 @@
 package hu.greenfox.ramin.controllers;
 
-import hu.greenfox.ramin.models.AppendA;
-import hu.greenfox.ramin.models.Doubling;
-import hu.greenfox.ramin.models.Greeting;
-import hu.greenfox.ramin.models.MyErrors;
+import hu.greenfox.ramin.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,6 +42,20 @@ public class MainRestController {
   }
 
   @Autowired
+  Result doUntil;
+
+  @PostMapping("/dountil/{what}")
+  public Result getDoUntil(@PathVariable String what, @RequestBody Until inputNumber) {
+
+    if (what.equals("sum")) {
+      doUntil.sum(inputNumber.getUntil());
+    } else {
+      doUntil.factor(inputNumber.getUntil());
+    }
+    return doUntil;
+  }
+
+  @Autowired
   MyErrors myErrors;
 
   //   Creating JSON form of error respond(means inside the curly bracket) with Object of the class
@@ -60,5 +72,10 @@ public class MainRestController {
     return myErrors;
   }
 
+  @ExceptionHandler(HttpMessageNotReadableException.class)
+  public MyErrors errorHandlerDOUntil(HttpMessageNotReadableException e) {
+    myErrors.setError("Please provide a number!");
+    return myErrors;
+  }
 
 }
