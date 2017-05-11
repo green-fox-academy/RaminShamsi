@@ -55,14 +55,25 @@ public class MainRestController {
     return resultObj;
   }
 
-@Autowired
-ArrayResult arrayResult;
-  @PostMapping(value="/arrays")
-  public ArrayResult getArrayResult(@RequestBody ArrayWhat inputData){
+
+  @Autowired
+  IntResult intResult;
+  @Autowired
+  ArrayResult arrayResult;
+
+  @PostMapping(value = "/arrays")
+  public ParentResult getArrayResult(@RequestBody ArrayWhat inputData) {
     if (inputData.getWhat().equals("sum")) {
-      arrayResult.sum(inputData.getInputArray());
+      intResult.sum(inputData.getInputArray());
+      return intResult;
+    } else if (inputData.getWhat().equals("multiply")) {
+      intResult.multiply(inputData.getInputArray());
+      return intResult;
+    } else if (inputData.getWhat().equals("double")) {
+      arrayResult.doubled(inputData.getInputArray());
+      return arrayResult;
     }
-    return arrayResult;
+    return null;
   }
 
   @Autowired
@@ -89,7 +100,7 @@ ArrayResult arrayResult;
   }
 
   @ExceptionHandler(NullPointerException.class)
-  public MyErrors getMyErrorsArray(NullPointerException e){
+  public MyErrors getMyErrorsArray(NullPointerException e) {
     myErrors.setError("Please provide what to do with the numbers!");
     return myErrors;
   }

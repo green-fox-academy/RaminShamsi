@@ -4,26 +4,26 @@ package hu.greenfox.ramin.models;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ArrayResult {
+public class ArrayResult extends ParentResult{
 
-  private int result;
+  int[] result;
 
   public ArrayResult() {
   }
 
-  public void sum(int[] array) {
-    int sum = 0;
+  public void doubled(int[] array) {
+
+    this.result = new int[array.length];
     for (int i = 0; i < array.length; i++) {
-      sum += array[i];
+      this.result[i] = 2 * array[i];
     }
-    this.result = sum;
   }
 
-  public int getResult() {
+  public int[] getResult() {
     return result;
   }
 
-  public void setResult(int result) {
+  public void setResult(int[] result) {
     this.result = result;
   }
 }
