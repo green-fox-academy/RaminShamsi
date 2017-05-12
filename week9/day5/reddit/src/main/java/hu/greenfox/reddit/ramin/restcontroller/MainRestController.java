@@ -34,7 +34,16 @@ public class MainRestController {
   /////////////////////// PUTMAPING Method////////
   @PutMapping("posts/{id}/upvote")
   public Post upvotePosts(@PathVariable Long id, @RequestBody Post post) {
-    repository.findOne(id).setScore(repository.findOne(id).getScore() + 1);
-    return repository.save(post);
+    Post postItem = repository.findOne(id);
+    postItem.setScore(postItem.getScore() + 1);
+    return repository.save(postItem);
   }
+
+  @PutMapping("posts/{id}/downvote")
+  public Post downPosts(@PathVariable Long id, @RequestBody Post post) {
+    Post postItem = repository.findOne(id);
+    postItem.setScore(postItem.getScore() - 1);
+    return repository.save(postItem);
+  }
+  ////////////////////////////////////////////////
 }
