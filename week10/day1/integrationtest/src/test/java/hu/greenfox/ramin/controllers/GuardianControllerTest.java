@@ -21,6 +21,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.nio.charset.Charset;
 
+import static org.hamcrest.Matchers.closeTo;
 import static org.hamcrest.core.Is.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -46,15 +47,61 @@ public class GuardianControllerTest {
     this.mockMvc = webAppContextSetup(webApplicationContext).build();
   }
 
+  /////////////////////////////////// Exersice 1 /////////////////////////////
   @Test
-  public void yourFirstTest() throws Exception {
+  public void gaurdianContentTest() throws Exception {
     mockMvc.perform(get("/groot")
             .contentType(MediaType.APPLICATION_JSON)
-            .param("message","Hello"))                         /// End of the Get Method  //Giving the ?message=Hello
+            .param("message", "Hello"))                         /// End of the Get Method  //Giving the ?message=Hello
             .andExpect(status().isOk())                       // Starting of perform
             .andExpect(content().contentType(contentType))
             .andExpect(jsonPath("$.translated", is("I am Groot!")));
-
-
   }
+
+  @Test
+  public void gaurdianErrorTest() throws Exception {
+    mockMvc.perform(get("/groot")
+            .contentType(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())                        //it means get status=200, beacuse we handled the error
+            .andExpect(content().contentType(contentType))
+            .andExpect(jsonPath("$.error", is("I am Groot!")))
+            .andDo(print());            //Print out all things which done it before
+  }
+
+  /////////////////////////////////// Exersice 2 /////////////////////////////
+  @Test
+  public void yonduContentTest() throws Exception {
+ //   Double num1 = 500D;
+ //   Double num2 = 23D;
+    mockMvc.perform(get("/yondu")
+            .contentType(MediaType.APPLICATION_JSON)
+            .param("distance", "500")
+            .param("time", "23"))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(contentType))
+            .andExpect(jsonPath("$.speed").value(closeTo(500 / 23, 5)))
+            .andDo(print());             // expecting float result with 5 digits
+  }
+
+  @Test
+  public void yonduInfinityTest() throws Exception {
+    mockMvc.perform(get("/yondu")
+            .contentType(MediaType.APPLICATION_JSON)
+            .param("distance", "500")
+            .param("time", "0"))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(contentType))
+            .andExpect(jsonPath("$.speed", is("Infinity")));
+  }
+
+  @Test
+  public void yonduErrorTest() throws Exception {
+    mockMvc.perform(get("/yondu")
+            .contentType(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(contentType))
+            .andExpect(jsonPath("$.error", is("Distance or Time is missing!")))
+            .andDo(print());            //Print out all things which done it before
+  }
+
 }
