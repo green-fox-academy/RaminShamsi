@@ -11,8 +11,10 @@ public class FoodList {
 
   public List<Food> foodList;
 
+
   public FoodList() {
     foodList = new ArrayList<>();
+
   }
 
 }

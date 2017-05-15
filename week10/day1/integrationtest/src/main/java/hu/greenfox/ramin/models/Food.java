@@ -5,7 +5,7 @@ public class Food {
 
   String name;
   int amount;
-  float calorie;
+  Float calorie;
 
   public Food() {
 

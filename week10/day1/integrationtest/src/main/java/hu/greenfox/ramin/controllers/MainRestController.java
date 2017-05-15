@@ -41,9 +41,19 @@ public class MainRestController {
   @Autowired
   FoodList myFoodList;
 
+  @Autowired
+  CalorieList calorieList;
+
+  @GetMapping("/drax")
+  public CalorieList getCalorie() {
+    for (int i = 0; i < myFoodList.foodList.size(); i++) {
+      calorieList.getCalorie().add(myFoodList.foodList.get(i).getCalorie());
+    }
+    return calorieList;
+  }
+
   @PostMapping("/add")
   public FoodList getFood(@RequestBody Food food) {
-    System.out.println(myFoodList);
     myFoodList.foodList.add(food);
     return myFoodList;
   }
@@ -58,6 +68,18 @@ public class MainRestController {
     return myFoodList;
   }
 
+  @Autowired
+  Amount amount;
+
+  @PutMapping("/{name}/update")
+  public FoodList updateFood(@PathVariable String name, @RequestBody Amount amount) {
+    for (int i = 0; i < myFoodList.foodList.size(); i++) {
+      if (myFoodList.foodList.get(i).getName().contains(name)) {
+        myFoodList.foodList.get(i).setAmount(amount.getAmount());
+      }
+    }
+    return myFoodList;
+  }
 
   ///////////////////// Error Handling ///// exercise 1, 2 /////////////
 
