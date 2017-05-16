@@ -20,10 +20,10 @@ public class DatabasemysqlApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		repository.save(new Todo("Start the Day", false, false));
-		repository.save(new Todo("Finish H2 Workshop", true, false));
-		repository.save(new Todo("Finish JPA Workshop", false, true));
-		repository.save(new Todo("Go to run", true, true));
-		repository.save(new Todo("Sleep", true, false));
+//		repository.save(new Todo("Start the Day", false, false));
+//		repository.save(new Todo("Finish H2 Workshop", true, false));
+//		repository.save(new Todo("Finish JPA Workshop", false, true));
+//		repository.save(new Todo("Go to run", true, true));
+//		repository.save(new Todo("Sleep", true, false));
 	}
 }

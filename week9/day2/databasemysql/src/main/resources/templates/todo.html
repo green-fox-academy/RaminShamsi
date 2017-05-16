@@ -7,17 +7,34 @@
 </head>
 <body>
 <h1>Todos for Today:</h1>
+<!--
+<div>
+    <a th:href="@{/todo?isActive=false}">List of Undone Todos</a>
+</div>
 
-<a href="add.html"> Add New Todo</a>
+<div>
+    <a th:href="@{/todo?isActive=true}">List of Done Todos</a>
+</div>
+-->
+<div>
+    <a th:href="@{/todo/add.html}"> Add New Todo</a>
+</div>
+<div>
+    <p>
+        <div>
+    <p></p>
+</div>
+</p>
+</div>
 
 <div>
     <b>
-        <form action="/todo/done" method="get" >
-            <input type="checkbox" > List the Done Todos </input>
+        <form action="/todo/done" method="get">
+            <button th:name="isDone" th:value="true">List the Done Todos</button>
+            <button th:name="isDone" th:value="false">List the NOT Done Todos</button>
         </form>
     </b>
 </div>
-
 <table>
     <header>
         <tr>
@@ -32,7 +49,12 @@
         <td th:text="${item.getTitle()}"></td>
         <td th:text="${item.isDone()}"></td>
         <td th:text="${item.isUrgent()}"></td>
+        <td><a th:href="|${item.getId()}/delete|">Delete</a></td>
+        <td><a th:href="${item.getId()} + '/edit'">Edit</a></td>
     </tr>
 </table>
+<form action="/todo/" method="post">
+    <input type="SUBMIT" value="All todos"/>
+</form>
 </body>
 </html>

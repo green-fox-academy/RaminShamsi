@@ -6,12 +6,11 @@
 </head>
 <body>
 <h1>Add New Todo</h1>
-<!--           -->
- <form action="/todo/submit" method="post" th:object="${todo}">
-    <input type="text" th:field="*{title}"/>
-
+<form action="/todo/submit" method="post" th:object="${todo}">
+    Title of ToDo: <input type="text" th:field="*{title}"/>
+    <div>
         <input type="submit" value="Submit"/>
-
+    </div>
 </form>
 </body>
 </html>

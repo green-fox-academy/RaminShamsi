@@ -1,3 +1,19 @@
+body {
+    background-image: url("todolist.jpg");
+    background-size: cover;
+}
+
+table {
+
+    background-color: rgba(100, 255, 100, 0.5);
+}
+
 td {
-    border: solid 1px;
+    border: solid 2px;
+    width: auto;
+}
+
+header {
+    border-bottom: solid 4px;
+
 }

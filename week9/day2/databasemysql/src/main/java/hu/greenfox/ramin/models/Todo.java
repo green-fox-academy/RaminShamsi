@@ -1,32 +1,61 @@
 package hu.greenfox.ramin.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@lombok.Getter
-@lombok.Setter
+
 @Entity
 public class Todo {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  int id;
+  long id;
   String title;
-  boolean isUrgent = false;
-  boolean isDone = false;
+  @Column(columnDefinition = "TINYINT(1)")
+  boolean urgent;
+  @Column(columnDefinition = "TINYINT(1)")
+  boolean done;
 
   public Todo() {
 
   }
 
-
-  public Todo(String title, boolean isUrgent, boolean isDone) {
+  public Todo(String title, boolean urgent, boolean done) {
     this.title = title;
-    this.isUrgent = isUrgent;
-    this.isDone = isDone;
+    this.urgent = urgent;
+    this.done = done;
+  }
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public boolean isUrgent() {
+    return urgent;
+  }
+
+  public void setUrgent(boolean urgent) {
+    this.urgent = urgent;
+  }
+
+  public boolean isDone() {
+    return done;
+  }
+
+  public void setDone(boolean done) {
+    this.done = done;
   }
 
   @Override
@@ -34,8 +63,8 @@ public class Todo {
     return "Todo{" +
             "id=" + id +
             ", title='" + title + '\'' +
-            ", isUrgent=" + isUrgent +
-            ", isDone=" + isDone +
+            ", isUrgent=" + urgent +
+            ", isDone=" + done +
             '}';
   }
 }
