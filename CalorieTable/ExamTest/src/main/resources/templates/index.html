@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Title Calorie Counter</title>
+</head>
+<body>
+<h1>The Calorie Counter Project</h1>
+<h2 th:text="'Number of meal: ' + ${numberOfMeals}">Number of meals:</h2>
+<h2 th:text="'Total calories: ' + ${totalCalorie}">Total calories:</h2>
+<a th:href="@{/add.html}">Add or Edit Meal</a>
+
+<table>
+  <header>
+    <tr>
+      <th>meal date</th>
+      <th>type</th>
+      <th>description</th>
+      <th>calories</th>
+    </tr>
+  </header>
+  <tr th:each="item : ${list}">
+    <td th:text="${item.getDate()}"></td>
+    <td th:text="${item.getType()}"></td>
+    <td th:text="${item.getDescription()}"></td>
+    <td th:text="${item.getCalories()}"></td>
+    <td><a th:href="@{'/edit/{id}' (id=${item.getId()}) }">Edit</a></td>
+    <td><a th:href="'delete/' + ${item.getId()}">Delete</a></td>
+  </tr>
+</table>
+</body>
+</html>

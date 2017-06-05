@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Add or Edit Meal</title>
+</head>
+<body>
+<h1>Add or Edit Meal</h1>
+<form th:action="@{/submit}" th:object="${mealInfo}" method="post">
+  <input type="hidden" th:field="*{id}"></input>
+  date : <input type="date" th:field="*{date}"/>
+  <b th:if="${#fields.hasErrors('date')}" th:errors="*{date}" th:text="Date can not be empty!"></b>
+  type:
+  <select name="mealtype" id="">
+    <p th:each="item : ${mealType}">
+      <option th:text="${item.getType()}" th:value="${item.getType()}">Meal Type</option>
+    </p>
+  </select>
+
+  description: <input type="text" th:field="*{description}" placeholder="Description"/>
+  <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}">
+    <b>The Description is missing</b>
+  </div>
+
+
+  calorie: <input type="number" th:field="*{calories}" placeholder="Calories"/>
+  <b th:if="${#fields.hasErrors('calories')}" th:errors="*{calories}" th:text="*{calories} + ' is not a valid number!'"></b>
+
+  <input type="submit" value="Save"/>
+  <a href="/index">Cancel</a>
+</form>
+
+</body>
+</html>
