@@ -1,0 +1,6 @@
+F:\GreenFox\RaminShamsi\C#\day1\E1\EvenNumberFromArray\EvenNumberFromArray\bin\Debug\EvenNumberFromArray.exe.config
+F:\GreenFox\RaminShamsi\C#\day1\E1\EvenNumberFromArray\EvenNumberFromArray\bin\Debug\EvenNumberFromArray.exe
+F:\GreenFox\RaminShamsi\C#\day1\E1\EvenNumberFromArray\EvenNumberFromArray\bin\Debug\EvenNumberFromArray.pdb
+F:\GreenFox\RaminShamsi\C#\day1\E1\EvenNumberFromArray\EvenNumberFromArray\obj\Debug\EvenNumberFromArray.csprojResolveAssemblyReference.cache
+F:\GreenFox\RaminShamsi\C#\day1\E1\EvenNumberFromArray\EvenNumberFromArray\obj\Debug\EvenNumberFromArray.exe
+F:\GreenFox\RaminShamsi\C#\day1\E1\EvenNumberFromArray\EvenNumberFromArray\obj\Debug\EvenNumberFromArray.pdb
