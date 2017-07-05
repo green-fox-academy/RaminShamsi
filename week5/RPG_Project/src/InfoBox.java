@@ -4,18 +4,12 @@ import java.awt.*;
  * Created by HP on 4/13/2017.
  */
 public class InfoBox {
-  //  int level, maxHP, currentHP, DP, SP;
+
   String[] textInfo, totalInfo;
   int[] valueInfo;
   int numberOfInfo;
 
   public InfoBox() {
-//    this.level = 1;
-    //   this.maxHP = 100;
-    //   this.currentHP = value;
-    //   this.DP = 30;
-    //   this.SP = 50;
-//    this.totalInfo = "";
     numberOfInfo = 5;
   }
 
@@ -56,16 +50,6 @@ public class InfoBox {
       }
     }
 
-//    text.drawString(setInfo(), 25, 640);
-
-
-//    System.out.println("Max. Health Point: " + maxHP);
-//    System.out.println("Current Heaith Point: " + currentHP);
-//    System.out.println("Defend Point: " + DP);
-//    System.out.println("Strike Point: " + maxHP);
-
-    // text.drawString(info, 25, 620);
   }
-
 
 }

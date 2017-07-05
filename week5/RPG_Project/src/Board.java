@@ -118,33 +118,25 @@ public class Board extends JComponent implements KeyListener {
       for (int i = 0; i < numberOfSkeleton; i++) {
         skeleton[i].move();
       }
-//      skeleton[1].move();
     } else if (e.getKeyCode() == KeyEvent.VK_DOWN && hero.posY < (720 - 72)
             && !newWallArea.isWall(hero.posX, hero.posY + 72)) {
       hero.moveDown();
       for (int i = 0; i < numberOfSkeleton; i++) {
         skeleton[i].move();
       }
-//      skeleton[1].move();
     } else if (e.getKeyCode() == KeyEvent.VK_LEFT && hero.posX > 0
             && !newWallArea.isWall(hero.posX - 72, hero.posY)) {
       hero.moveLeft();
       for (int i = 0; i < numberOfSkeleton; i++) {
         skeleton[i].move();
       }
-//      skeleton[1].move();
     } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && hero.posX < (720 - 72)
             && newWallArea.isWall(hero.posX + 72, hero.posY) == false) {
       hero.moveRight();
       for (int i = 0; i < numberOfSkeleton; i++) {
         skeleton[i].move();
       }
-//     skeleton[1].move();
     }
-
-    // and redraw to have a new picture with the new coordinates
-    //   invalidate();
     repaint();
-
   }
 }
