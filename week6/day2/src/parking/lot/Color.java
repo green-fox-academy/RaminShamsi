@@ -8,7 +8,7 @@ import java.util.List;
  */
 
 public enum Color {
-  COLOR("Red", "Blue", "Black", "Green", "Yellow", "Pink");
+    COLOR("Red", "Blue", "Black", "Green", "Yellow", "Pink");
 
   private List<String> carColor;
 

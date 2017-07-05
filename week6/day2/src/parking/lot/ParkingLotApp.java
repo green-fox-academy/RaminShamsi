@@ -1,6 +1,5 @@
 package parking.lot;
 
-import com.sun.xml.internal.bind.v2.util.QNameMap;
 
 import java.util.*;
 
@@ -14,10 +13,11 @@ public class ParkingLotApp {
     List<String> carMixedList = new ArrayList<>();
 
     Car myCar = new Car();
-    int sizeOfType = myCar.type.TYPE.showValue().size();
-    int sizeOfColor = myCar.color.COLOR.showValue().size();
+      int sizeOfType = Car.Type.TYPE.showValue().size();    //Accessing trough the Car class to Type enum Static and its fields
+    //   int sizeOfType = myCar.getType().TYPE.showValue().size();   // and get rid of warning of like color line
+    int sizeOfColor =myCar.color.COLOR.showValue().size();
 
-    List<String> listOfEnumType = myCar.type.TYPE.showValue();
+    List<String> listOfEnumType = Car.Type.TYPE.showValue();
     List<String> listOfEnumColor = myCar.color.COLOR.showValue();
 
     for (int i = 0; i < 256; i++) {
