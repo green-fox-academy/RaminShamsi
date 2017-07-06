@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class BeanFactory {
 
   @Bean
-  public HelloWorld getMessage(){
+  public HelloWorld getMessage() {
     return new HelloWorld();
   }
 }
