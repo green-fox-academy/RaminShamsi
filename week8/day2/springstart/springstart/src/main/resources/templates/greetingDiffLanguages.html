@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Greeting Different Languages</title>
+</head>
+<body>
+<h1>Hello in different languages:</h1>
+<!--
+This sign |...| means inside all concatenated and values from methods can easily sit in right place.
+ -->
+<h2 th:style="|font-size:${fontSize}px ; color:rgb(${r},${g},${b})|"  th:text="${randomHello}"/>
+</body>
+</html>

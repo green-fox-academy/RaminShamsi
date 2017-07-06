@@ -16,6 +16,6 @@ public class HelloWebController {
   public String greeting(Model model, @RequestParam("anyName") String name) {
     model.addAttribute("nameOfAnything", name);
     model.addAttribute("counter", newCounter.incrementAndGet());
-    return "greeting";
+    return "greeting";  /// this is greeting.html
   }
 }

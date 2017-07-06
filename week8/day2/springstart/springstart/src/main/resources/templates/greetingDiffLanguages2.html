@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+
+<body>
+<h1>Hello in different languages:</h1>
+<h2 th:style="'color: rgb('+${r}+','+${g}+','+${b}+'); font-size:'+${fontSize}+'px'" th:text="${randomHello}"/>
+<table>
+    <tbody>
+        <tr th:each="item : ${item}">
+           <ti  th:text="${item}"></ti>
+        </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>
