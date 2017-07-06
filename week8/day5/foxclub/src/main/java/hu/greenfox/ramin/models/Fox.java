@@ -20,7 +20,7 @@ public class Fox {
   public String trick2;
   public List<String> trickList2 = new ArrayList<>();
   public List<String> ListofTricks2 = new ArrayList<>(Arrays.asList(
-          "Make Coffee", "Clean the Flat", "Pick up a girl", "Cook a food", "Java programming", "Dancing", "Not get drunk"));
+          "Make Coffee", "Clean the Flat", "Pick up the Megan.", "Cook a food", "Java programming", "Dancing", "Not get drunk"));
 
   public List<Trick> trickList = new ArrayList<>();
   String drink;

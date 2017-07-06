@@ -56,19 +56,18 @@ public class MainController {
   }
 
 
-//  @RequestMapping("/submit")
-//  public String submit(HttpServletRequest request) {
-//    String actualFood =  request.getParameter("food");
-//    String actualDrink =  request.getParameter("drink");
-//   // System.out.println(actualFood);
-//   // System.out.println(actualDrink);
-//    fox.setActualFood(actualFood);
-//    fox.setActualDrink(actualDrink);
-//    return "redirect:/";
-//  }
+  @RequestMapping("/submit")
+  public String submit(HttpServletRequest request) {
+    String actualFood =  request.getParameter("food");
+    String actualDrink =  request.getParameter("drink");
+    fox.setActualFood(actualFood);
+    fox.setActualDrink(actualDrink);
+    return "redirect:/";
+  }
 
   @RequestMapping(value="/addNutrition")
-  public String changeNutrition(@RequestParam("food") String actualFood, @RequestParam("drink") String actualDrink){
+  public String changeNutrition(@RequestParam("food") String actualFood,
+                                @RequestParam("drink") String actualDrink){
     fox.setActualFood(actualFood);
     fox.setActualDrink(actualDrink);
   //  fox.foodList.remove(fox.foodList.indexOf(actualFood));
