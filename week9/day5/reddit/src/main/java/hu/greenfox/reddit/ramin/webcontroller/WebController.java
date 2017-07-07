@@ -15,6 +15,6 @@ public class WebController {
 
   @GetMapping("/")
   public String home(){
-    return "reddit-like";   ///Here we write the FrontEnd local IP address who is in same WIFI network
+    return "index";   ///Here we write the FrontEnd local IP address who is in same WIFI network
   }
 }

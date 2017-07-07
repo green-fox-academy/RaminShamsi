@@ -1,0 +1,122 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    height: 7vh;
+    background: #09c6ff;
+}
+#main_container {
+}
+
+.post_container {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: #FFF928;
+}
+
+.post_index_number {
+    height: 40%;
+    width: 3.5vw;
+    min-width: 28px;
+    max-width: 32px;
+    max-width: 2vw;
+    background: #FFFFFF;
+    font-size: 2em;
+    align-self: center;
+    padding-left: 5px;
+    padding-bottom: 3px;
+    color: black;
+}
+
+.post_vote {
+    height: 90%;
+    width: 3.5vw;
+    min-width: 30px;
+    max-width: 35px;
+    background: #E34897;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.post_vote_up {
+    height: 35%;
+    min-height: 15px;
+    width: 14px;
+    min-width: 14px;
+    padding-top: 0px;
+    background: url(img/upvote.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.post_vote_index {
+    height: 30%;
+    width:100%;
+    font-size: 0.9em;
+}
+
+.post_vote_down {
+    height: 35%;
+    min-height: 15px;
+    width: 14px;
+    min-width: 14px;
+    padding-top: 0px;
+    background: url(img/downvote.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.post_info_container {
+    height: 90%;
+    width: 100%;
+    background: #7E29BF;
+    display: flex;
+    flex-direction: column;
+}
+
+.post_title {
+    height: 50%;
+    width: 100%;
+    padding: 1% 0.2% 0.4% 0;
+    font-size: 1.3em;
+    font-family: 'Roboto', sans-serif;
+}
+
+.post_date_and_name {
+    height: 25%;
+    width: 100%;
+    padding: 0.2% 0.2%;
+    font-size: 0.6em;
+}
+
+.post_edit_container {
+    height: 25%;
+    width: 100%;
+    padding: 0.2% 0.2%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.post_modify {
+    font-size: 0.6em;
+    margin-right: 0.2%;
+    list-style: none;
+}
+
+.post_remove {
+    font-size: 0.6em;
+    margin-right: 0.2%;
+    list-style: none;
+}

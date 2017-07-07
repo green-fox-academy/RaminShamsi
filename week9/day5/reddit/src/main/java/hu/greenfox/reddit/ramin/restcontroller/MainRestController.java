@@ -30,7 +30,6 @@ public class MainRestController {
   /// but does not put word "posts" in front of the list
   @GetMapping("/posts")
   public HashMap<String, Iterable<Post>> getPosts() {
-
     HashMap<String, Iterable<Post>> posts = new HashMap<>();
     posts.put("posts", repository.findAll());
     return posts;
