@@ -1,0 +1,59 @@
+SELECT * FROM north_american_cities
+WHERE Longitude < -87.629798
+ORDER BY Longitude DESC;
+
+
+SELECT * FROM North_american_cities
+WHERE Country LIKE "Mexico"
+ORDER BY Population DESC
+LIMIT 2;
+
+
+SELECT * FROM North_american_cities
+WHERE Country LIKE "United States"
+ORDER BY Population DESC 
+LIMIT 2 OFFSET 2; (=selecting just 2 items just at 3rd and 4th place)
+
+
+SELECT id, Domestic_sales, International_sales FROM movies
+
+INNER JOIN boxoffice
+ON Movies.Id = boxoffice.Movie_id;
+(Combined 2 table in one)
+
+
+
+https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_query_core/
+
+Q1)
+SELECT title FROM Movie
+WHERE director LIKE "Steven Spielberg";
+
+
+Q2)
+SELECT DISTINCT year FROM Movie
+LEFT JOIN Rating
+ON Movie.mID = Rating.mID
+WHERE Rating.stars >=4;
+
+
+Q3)
+SELECT title FROM movie
+LEFT JOIN rating
+ON movie.mID=rating.mID
+Where stars is null;
+
+
+Q4)
+SELECT name FROM Reviewer
+LEFT JOIN Rating
+ON Reviewer.rID = Rating.rID
+WHERE ratingDate IS NULL;
+
+
+Q5)
+
+SELECT name, title, stars, ratingDate
+FROM Movie, Reviewer, Rating
+WHERE (Movie.mID=Rating.mID AND Reviewer.rID=Rating.rID)
+ORDER BY name,title ASC;
