@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.jayway.jsonpath.JsonPath;
 import hu.greenfox.ramin.IntegrationtestApplication;
+import hu.greenfox.ramin.models.Food;
+import hu.greenfox.ramin.models.FoodList;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -68,11 +70,9 @@ public class GuardianControllerTest {
             .andDo(print());            //Print out all things which done it before
   }
 
-  /////////////////////////////////// Exersice 2 /////////////////////////////
+  /////////////////////////////////// Exercise 2 /////////////////////////////
   @Test
   public void yonduContentTest() throws Exception {
- //   Double num1 = 500D;
- //   Double num2 = 23D;
     mockMvc.perform(get("/yondu")
             .contentType(MediaType.APPLICATION_JSON)
             .param("distance", "500")
@@ -102,6 +102,19 @@ public class GuardianControllerTest {
             .andExpect(content().contentType(contentType))
             .andExpect(jsonPath("$.error", is("Distance or Time is missing!")))
             .andDo(print());            //Print out all things which done it before
+  }
+
+  ////////////////  Exercise 4 //////////////
+  @Test
+  public void calorieTableTest() throws Exception {
+
+    mockMvc.perform(put("/kiwi/update")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content("{\"amount\" : \"0\"}"))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(contentType))
+            .andExpect(jsonPath("$.foodList[?(@.name=='kiwi')].amount", is(0)))
+            .andDo(print());
   }
 
 }

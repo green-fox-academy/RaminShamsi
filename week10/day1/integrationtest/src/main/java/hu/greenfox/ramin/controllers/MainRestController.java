@@ -41,6 +41,14 @@ public class MainRestController {
   @Autowired
   FoodList myFoodList;
 
+  public FoodList getMyFoodList() {
+    return myFoodList;
+  }
+
+  public void setMyFoodList(FoodList myFoodList) {
+    this.myFoodList = myFoodList;
+  }
+
   @Autowired
   CalorieList calorieList;
 
@@ -73,6 +81,9 @@ public class MainRestController {
 
   @PutMapping("/{name}/update")
   public FoodList updateFood(@PathVariable String name, @RequestBody Amount amount) {
+ //   Food newFood = new Food("kiwi", 12, 99);
+ //   FoodList myFoodList = new FoodList();
+ //   myFoodList.foodList.add(newFood);
     for (int i = 0; i < myFoodList.foodList.size(); i++) {
       if (myFoodList.foodList.get(i).getName().contains(name)) {
         myFoodList.foodList.get(i).setAmount(amount.getAmount());
