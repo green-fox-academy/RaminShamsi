@@ -7,6 +7,7 @@ public class Algorithm {
     sumOfAllMultiplesOf3And5(1000);
     sumOfEvenValueInFibonacci();
     largestPrimeFactor(13195L);
+    larget3DigitPalindromic();
   }
 
   private static void sumOfAllMultiplesOf3And5(int input) {
@@ -66,10 +67,19 @@ public class Algorithm {
     return true;
   }
 
-  private static void larget3DigitPalindorimic() {
+  private static void larget3DigitPalindromic() {
+    int max = 0;
     for (int i = 100; i < 999; i++) {
-
+      for (int j = 100; j < 999; j++) {
+        if (isItPalindromic(i * j)) {
+          System.out.println("i = " + i + " j = " + j + " Result = " + (i * j));
+          if (max < i * j) {
+            max = i * j;
+          }
+        }
+      }
     }
+    System.out.println(max);
   }
 
   private static boolean isItPalindromic(int n) {
@@ -80,7 +90,7 @@ public class Algorithm {
       rev = rev * 10 + dig;
       num = num / 10;
     }
-    if (n == rev){
+    if (n == rev) {
       return true;
     }
     return false;
