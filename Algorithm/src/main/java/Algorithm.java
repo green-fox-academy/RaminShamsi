@@ -65,4 +65,24 @@ public class Algorithm {
     }
     return true;
   }
+
+  private static void larget3DigitPalindorimic() {
+    for (int i = 100; i < 999; i++) {
+
+    }
+  }
+
+  private static boolean isItPalindromic(int n) {
+    int num = n;
+    int rev = 0;
+    while (num > 0) {
+      int dig = num % 10;
+      rev = rev * 10 + dig;
+      num = num / 10;
+    }
+    if (n == rev){
+      return true;
+    }
+    return false;
+  }
 }
