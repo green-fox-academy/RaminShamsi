@@ -20,7 +20,16 @@ public class Algorithm {
   }
 
   private static void sumOfEvenValueInFibonacci() {
-    fibonacci(11);
+    int i = 0;
+    int sum = 0;
+    while (fibonacci(i) < 4000000) {
+      System.out.println("i = " + i + " fibonacci= " + fibonacci(i));
+      if (fibonacci(i) % 2 == 0) {
+        sum += fibonacci(i);
+      }
+      i++;
+    }
+    System.out.println(sum);
   }
 
   private static int fibonacci(int n) {
