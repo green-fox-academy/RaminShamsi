@@ -5,7 +5,8 @@ public class Algorithm {
 
   public static void main(String[] args) {
     sumOfAllMultiplesOf3And5(1000);
-    largestPrimeFactor(1319500L);
+    sumOfEvenValueInFibonacci();
+    largestPrimeFactor(13195L);
   }
 
   private static void sumOfAllMultiplesOf3And5(int input) {
@@ -18,6 +19,20 @@ public class Algorithm {
     System.out.println("sumOfAllMultiplesOf3And5(1000) = " + sum);
   }
 
+  private static void sumOfEvenValueInFibonacci() {
+    fibonacci(11);
+  }
+
+  private static int fibonacci(int n) {
+    if (n == 0) {
+      return 0;
+    } else if (n == 1) {
+      return 1;
+    } else {
+      return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+  }
+
   private static void largestPrimeFactor(Long input) {
     Long maxPrimeFactor = input;
     Long i = 2L;
@@ -28,13 +43,13 @@ public class Algorithm {
         }
       }
       i++;
-      System.out.println(i);
+//      System.out.println(i);
     }
     System.out.println("largestPrimeFactor = " + maxPrimeFactor);
   }
 
   private static boolean isItPrime(Long n) {
-    for (int j = 2; j < n/2+1; j++) {
+    for (int j = 2; j < n / 2 + 1; j++) {
       if (n % j == 0) {
         return false;
       }
